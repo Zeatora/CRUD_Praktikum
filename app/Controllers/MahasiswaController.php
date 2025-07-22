@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\MahasiswaModel;
+
 class MahasiswaController extends BaseController
 {
     public function index()
@@ -12,19 +13,20 @@ class MahasiswaController extends BaseController
         $nama = $this->request->getGet('nama');
         $jurusan = $this->request->getGet('jurusan');
 
-        $db = \Config\Database::connect();
-        $builder = $db->table('mahasiswa');
+        $model = new MahasiswaModel();
+
+        $builder = $model;
 
         if ($nama) {
-            $builder->like('nama', $nama);
+            $builder = $builder->like('nama', $nama);
         }
 
         if ($jurusan) {
-            $builder->where('jurusan', $jurusan);
+            $builder = $builder->where('jurusan', $jurusan);
         }
 
-        $query = $builder->get();
-        $data['mahasiswa'] = $query->getResultArray();
+        $data['mahasiswa'] = $builder->paginate(5, 'default');
+        $data['pager'] = $model->pager;
 
         $data['nama'] = $nama;
         $data['jurusan'] = $jurusan;
@@ -32,6 +34,7 @@ class MahasiswaController extends BaseController
 
         return view('index', $data);
     }
+
 
     public function create()
     {
@@ -42,6 +45,7 @@ class MahasiswaController extends BaseController
     {
         $validationRule = [
             'nama' => 'required|min_length[3]',
+            'jurusan' => 'required|min_length[3]',
             'nim' => 'required|numeric',
             'email' => 'required|valid_email',
             'file_upload' => [
@@ -87,7 +91,8 @@ class MahasiswaController extends BaseController
     {
         $validationRule = [
             'nama' => 'required|min_length[3]',
-            'nim' => 'required|numeric',
+            'jurusan' => 'required|min_length[3]',
+            'nim' => 'required|numeric|min_length[3]',
             'email' => 'required|valid_email',
         ];
 
