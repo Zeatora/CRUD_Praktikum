@@ -11,5 +11,5 @@
 
 <?php if ($pager->hasNextPage()): ?>
     <a href="<?= $pager->getNextPage() ?>" class="px-3 py-1 border bg-white hover:bg-gray-100">Selanjutnya</a>
-    <a href="<?= $pager->getLast() ?>" class="px-3 py-1 border rounded-r bg-white hover:bg-gray-100">Sebelumnya</a>
+    <a href="<?= $pager->getLast() ?>" class="px-3 py-1 border rounded-r bg-white hover:bg-gray-100">Akhir</a>
 <?php endif ?>

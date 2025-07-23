@@ -53,6 +53,7 @@
             <table class="w-full border border-gray-300 text-sm text-left table-auto">
                 <thead class="bg-gray-200 text-gray-700">
                     <tr>
+                        <th class="px-4 py-3 border">No</th>
                         <th class="px-4 py-3 border">Nama</th>
                         <th class="px-4 py-3 border">NIM</th>
                         <th class="px-4 py-3 border">Jurusan</th>
@@ -64,6 +65,7 @@
                 <tbody class="bg-white divide-y divide-gray-200">
                     <?php foreach ($mahasiswa as $m): ?>
                         <tr class="hover:bg-gray-50">
+                            <td class="px-4 py-3"><?= ++$start ?></td>
                             <td class="px-4 py-3"><?= $m['nama'] ?></td>
                             <td class="px-4 py-3"><?= $m['nim'] ?></td>
                             <td class="px-4 py-3"><?= $m['jurusan'] ?></td>
@@ -88,11 +90,11 @@
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
+
             </table>
             <div class="flex justify-center mt-4 space-x-1">
                 <?= $pager->links('default', 'tailwind_pager') ?>
             </div>
-
         </div>
     </div>
 </body>

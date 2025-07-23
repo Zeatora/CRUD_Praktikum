@@ -25,8 +25,10 @@ class MahasiswaController extends BaseController
             $builder = $builder->where('jurusan', $jurusan);
         }
 
-        $data['mahasiswa'] = $builder->paginate(5, 'default');
+        $perPage = 5;
+        $data['mahasiswa'] = $builder->paginate($perPage, 'default');
         $data['pager'] = $model->pager;
+        $data['start'] = $perPage * ($model ->pager->getCurrentPage('default') - 1);
 
         $data['nama'] = $nama;
         $data['jurusan'] = $jurusan;

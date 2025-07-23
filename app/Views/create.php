@@ -40,8 +40,15 @@
 
             <div>
                 <label class="block font-medium text-gray-700">Jurusan</label>
-                <input type="text" name="jurusan" class="mt-1 w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-400" required>
+            <select name="jurusan" class="mt-1 w-full border border-gray-300 px-4 py-2 rounded-lg focus:ring-2 focus:ring-blue-400" required>
+                <option value="">-- Pilih Jurusan --</option>
+                <option value="Teknik Informatika">Teknik Informatika</option>
+                <option value="Manajemen">Manajemen</option>
+                <option value="Akuntansi">Akuntansi</option>
+            </select>
             </div>
+            
+
 
             <div>
                 <label class="block font-medium text-gray-700">Email</label>
